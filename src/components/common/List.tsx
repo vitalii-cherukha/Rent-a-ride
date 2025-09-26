@@ -39,7 +39,7 @@ const List = ({ query }: ListProps) => {
           <div key={car.id}>
             {/* image container */}
             <div>
-              <img src={car.img} alt={car.model} />
+              <img src={car.img} alt={car.brand} width="276" height="268" />
               <button>
                 <svg width="16" height="16">
                   <use />
