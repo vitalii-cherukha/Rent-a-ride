@@ -8,7 +8,7 @@ const Header = () => {
         <nav>
           <Link to={"/"}>
             <svg width="104" height="16">
-              <use href="./images/icons.svg#icon" />
+              <use href="/src/assets/images/icons.svg#icon-logo" />
             </svg>
           </Link>
           <ul>
