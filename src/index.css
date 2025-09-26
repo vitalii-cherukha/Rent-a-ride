@@ -43,3 +43,7 @@ fieldset {
   margin: 0;
   border: none;
 }
+
+body {
+  color: #101828;
+}

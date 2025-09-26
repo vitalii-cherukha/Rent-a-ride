@@ -20,14 +20,12 @@ const Home = () => {
           <Link
             className="
     bg-primary                 
-    hover:bg-primary-dark 
-    active:bg-primary-dark      
+    hover:bg-primary-dark      
     rounded-[12px] 
     py-[12px]                     
     px-[20px]  
     min-w-[279px] 
-    text-center                
-    shadow-button-primary    
+    text-center                 
     transition ease-linear duration-250
 "
             to={"/catalog"}

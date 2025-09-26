@@ -9,15 +9,25 @@ const Header = () => {
           <nav className="flex justify-between py-[24px]  ">
             <Link to={"/"}>
               <svg width="104" height="16">
-                <use href="/src/assets/images/icons.svg#icon-logo" />
+                <use href="./src/assets/images/icons.svg#icon-logo" />
               </svg>
             </Link>
             <ul className="flex gap-[32px]">
               <li>
-                <Link to={"/"}>Home</Link>
+                <Link
+                  className="hover:text-primary-dark transition ease-linear duration-250"
+                  to={"/"}
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to={"/catalog"}>Catalog</Link>
+                <Link
+                  className="hover:text-primary-dark transition ease-linear duration-250"
+                  to={"/catalog"}
+                >
+                  Catalog
+                </Link>
               </li>
             </ul>
           </nav>

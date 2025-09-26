@@ -29,17 +29,11 @@ const config: Config = {
         // Колір бордюрів / Роздільник (DADDED)
         "border-light": "#DADDE1",
 
-        // Колір фону 2 (F2F4F7) - Світло-сірий
+        // Колір фону - Світло-сірий
         "background-light": "#F2F4F7",
 
-        // Колір фону 3 (F7F7F7) - Дуже світлий сірий
+        // Колір фону - Дуже світлий сірий
         "background-alt": "#F7F7F7",
-
-        // Колір 'white' (#FFFFFF) доступний за замовчуванням
-      },
-
-      boxShadow: {
-        "button-primary": "0px 4px 8px rgba(52, 112, 255, 0.5)",
       },
     },
   },
