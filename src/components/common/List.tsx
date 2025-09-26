@@ -55,7 +55,7 @@ const List = ({ query }: ListProps) => {
                 className="absolute top-[14px] right-[14px]"
               >
                 <svg width="16" height="16">
-                  <use href="./src/assets/images/icons.svg#icon-like-default" />
+                  <use href="/icons.svg#icon-like-default" />
                 </svg>
               </button>
             </div>
