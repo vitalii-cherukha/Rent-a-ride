@@ -18,7 +18,9 @@ const CarDetails = () => {
         const data = await fetchCarById(id);
         setCar(data);
       } catch (error) {
-        console.error("Failed to fetch car by id:", error);
+        console.log("Failed to fetch car by id:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     loadCar();
