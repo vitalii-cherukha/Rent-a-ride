@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { fetchBrands } from '../../services/carsApi';
+import { useEffect, useState } from "react";
+import { fetchBrands } from "../../services/carsApi";
 
 interface FilterValues {
   brand?: string;
@@ -14,6 +14,14 @@ interface FilterBarProps {
 
 const FilterBar = ({ onSubmit }: FilterBarProps) => {
   const [brands, setBrands] = useState<string[]>([]);
+  const [isBrandOpen, setIsBrandOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState("");
+  const [mileageFrom, setMileageFrom] = useState("");
+  const [mileageTo, setMileageTo] = useState("");
+
+  const prices = ["30", "40", "50", "60", "70", "80"];
 
   useEffect(() => {
     const loadBrands = async () => {
@@ -27,16 +35,11 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
     loadBrands();
   }, []);
 
-  const handleSubmit = (formData: FormData) => {
+  const handleSubmit = () => {
     const values: FilterValues = {};
 
-    const brand = formData.get('brand') as string;
-    const price = formData.get('price') as string;
-    const mileageFrom = formData.get('mileageFrom') as string;
-    const mileageTo = formData.get('mileageTo') as string;
-
-    if (brand) values.brand = brand;
-    if (price) values.price = price;
+    if (selectedBrand) values.brand = selectedBrand;
+    if (selectedPrice) values.price = selectedPrice;
     if (mileageFrom) values.mileageFrom = Number(mileageFrom);
     if (mileageTo) values.mileageTo = Number(mileageTo);
 
@@ -44,31 +47,137 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
   };
 
   return (
-    <form action={handleSubmit}>
-      <select name="brand">
-        <option value="">Choose a brand</option>
-        {brands.map(brand => (
-          <option key={brand} value={brand.toLowerCase()}>
-            {brand}
-          </option>
-        ))}
-      </select>
+    <div className="flex">
+      <form
+        action={handleSubmit}
+        className="flex mx-auto  items-end gap-[16px] mt-[84px] mb-[56px] flex-wrap"
+      >
+        {/* Car brand dropdown */}
+        <div className="w-[204px]">
+          <label className="block text-[12px] text-[#8d929a] mb-[8px]">
+            Car brand
+          </label>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsBrandOpen(!isBrandOpen)}
+              className="w-full px-[16px] py-[12px] text-left bg-background-alt  rounded-[12px]  flex justify-between items-center"
+            >
+              <span>{selectedBrand || "Enter the text"}</span>
+              <svg
+                width="16"
+                height="16"
+                className={`transform transition-transform ${
+                  isBrandOpen ? "rotate-180" : ""
+                }`}
+              >
+                <use href="/icons.svg#icon-arrow-default" />
+              </svg>
+            </button>
 
-      <select name="price">
-        <option value="">Choose a price</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-        <option value="50">50</option>
-        <option value="60">60</option>
-        <option value="70">70</option>
-        <option value="80">80</option>
-      </select>
+            {isBrandOpen && (
+              <div className="absolute z-10 w-full mt-[4px] bg-white border border-background-alt rounded-[12px] max-h-[272px] overflow-y-auto">
+                {brands.map((brand, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => {
+                      setSelectedBrand(brand);
+                      setIsBrandOpen(false);
+                    }}
+                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition-colors ${
+                      selectedBrand === brand
+                        ? "text-dark-bg"
+                        : "text-[#8d929a]"
+                    }`}
+                  >
+                    {brand}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
 
-      <input type="number" name="mileageFrom" placeholder="From" />
-      <input type="number" name="mileageTo" placeholder="To" />
+        {/* Price dropdown */}
+        <div className="relative  w-[196px]">
+          <label className="block text-[12px] text-[#8d929a] mb-[8px]">
+            Price/ 1 hour
+          </label>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsPriceOpen(!isPriceOpen)}
+              className="w-full px-[16px] py-[12px] text-left bg-background-alt  rounded-[12px]  flex justify-between items-center"
+            >
+              <span>{selectedPrice ? `To $${selectedPrice}` : "To $"}</span>
+              <svg
+                width="16"
+                height="16"
+                className={`transform transition-transform ${
+                  isPriceOpen ? "rotate-180" : ""
+                }`}
+              >
+                <use href="/icons.svg#icon-arrow-default" />
+              </svg>
+            </button>
 
-      <button type="submit">Search</button>
-    </form>
+            {isPriceOpen && (
+              <div className="absolute z-10 w-full mt-[4px] bg-white border border-background-alt rounded-[12px] max-h-[188px] overflow-y-auto">
+                {prices.map((price) => (
+                  <button
+                    key={price}
+                    type="button"
+                    onClick={() => {
+                      setSelectedPrice(price);
+                      setIsPriceOpen(false);
+                    }}
+                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition-colors ${
+                      selectedPrice === price
+                        ? "text-dark-bg"
+                        : "text-[#8d929a]"
+                    }`}
+                  >
+                    {price}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Mileage inputs */}
+        <div>
+          <label className="block text-[12px] text-[#8d929a] mb-[8px]">
+            Car mileage / km
+          </label>
+          <div className="flex">
+            <input
+              type="number"
+              value={mileageFrom}
+              onChange={(e) => setMileageFrom(e.target.value)}
+              placeholder="From"
+              className="w-[160px] px-[24px] py-[12px] bg-background-alt  rounded-l-[12px] placeholder-dark-bg "
+            />
+            <input
+              type="number"
+              value={mileageTo}
+              onChange={(e) => setMileageTo(e.target.value)}
+              placeholder="To"
+              className="w-[160px] px-[24px] py-[12px] bg-background-alt rounded-r-[12px] placeholder-dark-bg border-l-black"
+            />
+          </div>
+        </div>
+
+        {/* Search button */}
+        <button
+          type="submit"
+          className="w-[156px] px-[20px] py-[12px] bg-primary text-white  rounded-[12px] hover:bg-primary-dark transition-colors"
+        >
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
 
