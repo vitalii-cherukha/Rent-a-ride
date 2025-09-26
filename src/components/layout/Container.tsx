@@ -3,7 +3,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children }: ContainerProps) => {
-  return <div>{children}</div>;
+  return <div className="container">{children}</div>;
 };
 
 export default Container;
