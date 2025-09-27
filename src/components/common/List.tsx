@@ -36,7 +36,7 @@ const List = ({ query }: ListProps) => {
   }, [query]);
 
   return (
-    <ul className="flex flex-wrap gap-x-[32px] gap-y-[48px]">
+    <ul className="flex flex-wrap gap-x-[32px] gap-y-[48px] mb-[80px] ">
       {cars.map((car) => {
         const { city, country } = getAddressParts(car.address);
         return (
@@ -60,8 +60,8 @@ const List = ({ query }: ListProps) => {
               </button>
             </div>
             {/* title+price container */}
-            <div className="flex  justify-between">
-              <h3>
+            <div className="flex  justify-between ">
+              <h3 className="leading-[1.25]">
                 {car.brand} <span className="text-primary">{car.model}</span>,{" "}
                 {car.year}
               </h3>
@@ -69,10 +69,10 @@ const List = ({ query }: ListProps) => {
             </div>
             {/* info container */}
             <div className="flex-1">
-              <p className="text-[12px] text-[#8d929a]">
+              <p className="text-[12px] text-[#8d929a] leading-[1.33]">
                 {city} | {country} | {car.rentalCompany}
               </p>
-              <p className="text-[12px] text-[#8d929a]">
+              <p className="text-[12px] text-[#8d929a] leading-[1.33]">
                 {car.type} | {car.mileage.toLocaleString("uk-UA")} km
               </p>
             </div>
@@ -87,6 +87,7 @@ const List = ({ query }: ListProps) => {
     px-[20px]                    
     text-center  
     text-white
+    leading-[1.25]
     transition ease-linear duration-250
 "
             >

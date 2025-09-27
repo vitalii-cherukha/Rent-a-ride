@@ -72,14 +72,14 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
       >
         {/* Car brand dropdown */}
         <div className="w-[204px]">
-          <label className="block text-[12px] text-[#8d929a] mb-[8px]">
+          <label className="block text-[12px] text-[#8d929a] mb-[8px] ">
             Car brand
           </label>
           <div className="relative">
             <button
               type="button"
               onClick={() => setIsBrandOpen(!isBrandOpen)}
-              className="w-full px-[16px] py-[12px] text-left bg-background-alt  rounded-[12px]  flex justify-between items-center"
+              className="w-full px-[16px] py-[12px] text-left bg-background-alt  rounded-[12px]  flex justify-between items-center leading-[1.25]"
             >
               <span>{selectedBrand || "Enter the text"}</span>
               <svg
@@ -103,7 +103,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                       setSelectedBrand(brand);
                       setIsBrandOpen(false);
                     }}
-                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
+                    className={`leading-[1.25] w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
                       selectedBrand === brand
                         ? "text-dark-bg"
                         : "text-[#8d929a]"
@@ -126,7 +126,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
             <button
               type="button"
               onClick={() => setIsPriceOpen(!isPriceOpen)}
-              className="w-full px-[16px] py-[12px] text-left bg-background-alt  rounded-[12px]  flex justify-between items-center"
+              className="w-full px-[16px] py-[12px] text-left bg-background-alt  rounded-[12px]  flex justify-between items-center leading-[1.25]"
             >
               <span>{selectedPrice ? `To $${selectedPrice}` : "To $"}</span>
               <svg
@@ -150,7 +150,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                       setSelectedPrice(price);
                       setIsPriceOpen(false);
                     }}
-                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
+                    className={`leading-[1.25] w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
                       selectedPrice === price
                         ? "text-dark-bg"
                         : "text-[#8d929a]"
@@ -176,9 +176,9 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                 value={mileageFrom}
                 onChange={handleMileageFromChange}
                 inputMode="numeric"
-                className="w-[160px] pl-[66px] pr-[20px] py-[12px] bg-background-alt  rounded-l-[12px] "
+                className="w-[160px] pl-[66px] pr-[20px] py-[12px] bg-background-alt  rounded-l-[12px] leading-[1.25] "
               />
-              <span className="absolute top-[12px] left-[24px] pointer-events-none">
+              <span className="absolute top-[12px] left-[24px] pointer-events-none ">
                 From
               </span>
             </div>
@@ -189,7 +189,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                 value={mileageTo}
                 onChange={handleMileageToChange}
                 inputMode="numeric"
-                className="w-[160px] pl-[45px] pr-[20px] py-[12px] bg-background-alt rounded-r-[12px]"
+                className="w-[160px] pl-[45px] pr-[20px] py-[12px] bg-background-alt rounded-r-[12px] leading-[1.25]"
               />
               <span className="absolute top-[12px] left-[24px] pointer-events-none">
                 To
@@ -201,7 +201,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         {/* Search button */}
         <button
           type="submit"
-          className="w-[156px] px-[20px] py-[12px] bg-primary text-white  rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250"
+          className="leading-[1.25] w-[156px] px-[20px] py-[12px] bg-primary text-white  rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250"
         >
           Search
         </button>

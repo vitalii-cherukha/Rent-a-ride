@@ -55,15 +55,50 @@ const CarDetails = () => {
           height="512"
         />
 
-        <div>
-          <h2>Book your car now</h2>
-          <p>Stay connected! We are always ready to help you.</p>
-          <form action="">
-            <input type="text" name="name" placeholder="Name*" required />
-            <input type="email" name="email" placeholder="Email*" required />
-            <input type="date" name="bookingDate" placeholder="Booking date" />
-            <textarea name="comment" placeholder="Comment" rows={4} />
-            <button type="submit">Send</button>
+        <div className="border border-border-light rounded-[10px] p-[32px] max-w-[640px]">
+          <h2 className="text-[20px] font-semibold mb-[8px] leading-[1.20]">
+            Book your car now
+          </h2>
+          <p className="text-[14px] text-[#8d929a] mb-[24px]">
+            Stay connected! We are always ready to help you.
+          </p>
+
+          <form className="flex flex-col gap-[18px]">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name*"
+              required
+              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg placeholder-[#8d929a] border-none"
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email*"
+              required
+              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg placeholder-[#8d929a] border-none"
+            />
+
+            <input
+              type="date"
+              name="bookingDate"
+              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg border-none"
+            />
+
+            <textarea
+              name="comment"
+              placeholder="Comment"
+              rows={4}
+              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg placeholder-[#8d929a] border-none resize-none"
+            />
+
+            <button
+              type="submit"
+              className="mx-auto w-[156px] py-[12px] bg-primary text-white font-semibold rounded-[14px] hover:bg-primary-dark transition ease-linear duration-250 mt-[6px] leading-[1.25]"
+            >
+              Send
+            </button>
           </form>
         </div>
       </div>
@@ -72,7 +107,7 @@ const CarDetails = () => {
         {/* title */}
         <div className="mb-[68px]">
           <div className="flex items-baseline mb-[8px]">
-            <h2 className="text-[24px] mr-[16px] leading-[1.33]">
+            <h2 className="text-[24px] mr-[16px] leading-[1.33] font-semibold">
               {car.brand}{" "}
               <span>
                 {car.model}, {car.year}
@@ -84,7 +119,7 @@ const CarDetails = () => {
             <svg width={16} height={16} className="mr-[4px]">
               <use href="/icons.svg#icon-location" />
             </svg>
-            <p>
+            <p className="mr-[16px]">
               {city}, {country}
             </p>
             <p>Mileage: {car.mileage.toLocaleString("uk-UA")} km</p>
@@ -99,7 +134,7 @@ const CarDetails = () => {
         {/* other information */}
         <div className="flex flex-col gap-[110px]">
           <div>
-            <h3 className="text-[20px] mb-[20px] leading-[1.20]">
+            <h3 className="text-[20px] mb-[20px] leading-[1.20] font-semibold">
               Rental Conditions:
             </h3>
             <ul className="flex flex-col gap-[16px]">
@@ -117,7 +152,7 @@ const CarDetails = () => {
           </div>
           {/* Car Specific... */}
           <div>
-            <h3 className="text-[20px] mb-[20px] leading-[1.20]">
+            <h3 className="text-[20px] mb-[20px] leading-[1.20] font-semibold">
               Car Specifications:
             </h3>
             <ul className="flex flex-col gap-[16px]">
@@ -151,7 +186,7 @@ const CarDetails = () => {
           </div>
           {/* Accessories... */}
           <div>
-            <h3 className="text-[20px] mb-[20px] leading-[1.20]">
+            <h3 className="text-[20px] mb-[20px] leading-[1.20] font-semibold">
               Accessories and functionalities:
             </h3>
             <ul className="flex flex-col gap-[16px]">
