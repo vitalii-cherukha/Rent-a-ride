@@ -44,7 +44,7 @@ const CarDetails = () => {
   const { city, country } = getAddressParts(car.address);
 
   return (
-    <div className="flex justify-center gap-[72px] pt-[84px]">
+    <div className="flex justify-center gap-[72px] pt-[84px] mb-[104px]">
       {/* img + form container */}
       <div className="flex flex-col gap-[40px] w-[650px]">
         <img
@@ -69,45 +69,47 @@ const CarDetails = () => {
       </div>
       {/* info container */}
       <div className="w-[488px]">
-        <div>
-          {/* title */}
-          <div>
-            <h2 className="text-[24px]">
+        {/* title */}
+        <div className="mb-[68px]">
+          <div className="flex items-baseline mb-[8px]">
+            <h2 className="text-[24px] mr-[16px] leading-[1.33]">
               {car.brand}{" "}
               <span>
                 {car.model}, {car.year}
               </span>
             </h2>
-            <p>{car.id}</p>
+            <p className="text-[#8d929a]">id: {car.id.slice(0, 4)}</p>
           </div>
-          {/* info */}
-          <div>
-            <svg width={16} height={16}>
-              <use />
+          <div className="flex items-center mb-[16px]">
+            <svg width={16} height={16} className="mr-[4px]">
+              <use href="/icons.svg#icon-location" />
             </svg>
             <p>
               {city}, {country}
             </p>
             <p>Mileage: {car.mileage.toLocaleString("uk-UA")} km</p>
           </div>
-          <p>${car.rentalPrice}</p>
-          <div>
+          <p className="leading-[1.33] text-[24px] text-primary">
+            ${car.rentalPrice}
+          </p>
+          <div className="mt-[32px]">
             <p>{car.description}</p>
           </div>
         </div>
         {/* other information */}
-        <div>
-          {/* Rental Cond... */}
+        <div className="flex flex-col gap-[110px]">
           <div>
-            <h3>Rental Conditions:</h3>
-            <ul>
+            <h3 className="text-[20px] mb-[20px] leading-[1.20]">
+              Rental Conditions:
+            </h3>
+            <ul className="flex flex-col gap-[16px]">
               {car.rentalConditions.map((conditions, index) => {
                 return (
-                  <li key={index}>
-                    <svg width="16" height="16">
-                      <use />
+                  <li key={index} className="flex items-center">
+                    <svg width="16" height="16" className="mr-[8px]">
+                      <use href="/icons.svg#icon-check" />
                     </svg>
-                    <p>{conditions}</p>
+                    <p className="leading-[1.25]">{conditions}</p>
                   </li>
                 );
               })}
@@ -115,45 +117,51 @@ const CarDetails = () => {
           </div>
           {/* Car Specific... */}
           <div>
-            <h3>Car Specifications:</h3>
-            <ul>
-              <li>
-                <svg width="16" height="16">
-                  <use></use>
+            <h3 className="text-[20px] mb-[20px] leading-[1.20]">
+              Car Specifications:
+            </h3>
+            <ul className="flex flex-col gap-[16px]">
+              <li className="flex items-center">
+                <svg width="16" height="16" className="mr-[8px]">
+                  <use href="/icons.svg#icon-calendar" />
                 </svg>
-                <p>Year: {car.year}</p>
+                <p className="leading-[1.25]">Year: {car.year}</p>
               </li>
-              <li>
-                <svg width="16" height="16">
-                  <use></use>
+              <li className="flex items-center">
+                <svg width="16" height="16" className="mr-[8px]">
+                  <use href="/icons.svg#icon-car" />
                 </svg>
-                <p>Type: {car.type}</p>
+                <p className="leading-[1.25]">Type: {car.type}</p>
               </li>
-              <li>
-                <svg width="16" height="16">
-                  <use></use>
+              <li className="flex items-center">
+                <svg width="16" height="16" className="mr-[8px]">
+                  <use href="/icons.svg#icon-fuel-pump" />
                 </svg>
-                <p>Fuel Consumption: {car.fuelConsumption}</p>
+                <p className="leading-[1.25]">
+                  Fuel Consumption: {car.fuelConsumption}
+                </p>
               </li>
-              <li>
-                <svg width="16" height="16">
-                  <use></use>
+              <li className="flex items-center">
+                <svg width="16" height="16" className="mr-[8px]">
+                  <use href="/icons.svg#icon-gear" />
                 </svg>
-                <p>Engine Size: {car.engineSize}</p>
+                <p className="leading-[1.25]">Engine Size: {car.engineSize}</p>
               </li>
             </ul>
           </div>
           {/* Accessories... */}
           <div>
-            <h3>Accessories and functionalities:</h3>
-            <ul>
+            <h3 className="text-[20px] mb-[20px] leading-[1.20]">
+              Accessories and functionalities:
+            </h3>
+            <ul className="flex flex-col gap-[16px]">
               {[...(car.accessories || []), ...(car.functionalities || [])].map(
                 (item, index) => (
-                  <li key={index}>
-                    <svg width="16" height="16">
-                      <use />
+                  <li key={index} className="flex items-center">
+                    <svg width="16" height="16" className="mr-[8px]">
+                      <use href="/icons.svg#icon-check" />
                     </svg>
-                    <p>{item}</p>
+                    <p className="leading-[1.25]">{item}</p>
                   </li>
                 )
               )}
