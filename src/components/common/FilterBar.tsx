@@ -21,6 +21,24 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
   const [mileageFrom, setMileageFrom] = useState("");
   const [mileageTo, setMileageTo] = useState("");
 
+  const formatNumber = (value: string): string => {
+    const numbers = value.replace(/\D/g, ""); //
+    if (!numbers) return "";
+    return Number(numbers).toLocaleString("en-US"); //
+  };
+
+  const handleMileageFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const formatted = formatNumber(value);
+    setMileageFrom(formatted);
+  };
+
+  const handleMileageToChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const formatted = formatNumber(value);
+    setMileageTo(formatted);
+  };
+
   const prices = ["30", "40", "50", "60", "70", "80"];
 
   useEffect(() => {
@@ -40,8 +58,8 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
 
     if (selectedBrand) values.brand = selectedBrand;
     if (selectedPrice) values.price = selectedPrice;
-    if (mileageFrom) values.mileageFrom = Number(mileageFrom);
-    if (mileageTo) values.mileageTo = Number(mileageTo);
+    if (mileageFrom) values.mileageFrom = Number(mileageFrom.replace(/,/g, ""));
+    if (mileageTo) values.mileageTo = Number(mileageTo.replace(/,/g, ""));
 
     onSubmit(values);
   };
@@ -85,7 +103,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                       setSelectedBrand(brand);
                       setIsBrandOpen(false);
                     }}
-                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition-colors ${
+                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
                       selectedBrand === brand
                         ? "text-dark-bg"
                         : "text-[#8d929a]"
@@ -132,7 +150,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                       setSelectedPrice(price);
                       setIsPriceOpen(false);
                     }}
-                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition-colors ${
+                    className={`w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
                       selectedPrice === price
                         ? "text-dark-bg"
                         : "text-[#8d929a]"
@@ -152,27 +170,38 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
             Car mileage / km
           </label>
           <div className="flex">
-            <input
-              type="number"
-              value={mileageFrom}
-              onChange={(e) => setMileageFrom(e.target.value)}
-              placeholder="From"
-              className="w-[160px] px-[24px] py-[12px] bg-background-alt  rounded-l-[12px] placeholder-dark-bg "
-            />
-            <input
-              type="number"
-              value={mileageTo}
-              onChange={(e) => setMileageTo(e.target.value)}
-              placeholder="To"
-              className="w-[160px] px-[24px] py-[12px] bg-background-alt rounded-r-[12px] placeholder-dark-bg border-l-black"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                value={mileageFrom}
+                onChange={handleMileageFromChange}
+                inputMode="numeric"
+                className="w-[160px] pl-[66px] pr-[20px] py-[12px] bg-background-alt  rounded-l-[12px] "
+              />
+              <span className="absolute top-[12px] left-[24px] pointer-events-none">
+                From
+              </span>
+            </div>
+            <div className="w-[1px] bg-[#8d929a] "></div>
+            <div className="relative">
+              <input
+                type="text"
+                value={mileageTo}
+                onChange={handleMileageToChange}
+                inputMode="numeric"
+                className="w-[160px] pl-[45px] pr-[20px] py-[12px] bg-background-alt rounded-r-[12px]"
+              />
+              <span className="absolute top-[12px] left-[24px] pointer-events-none">
+                To
+              </span>
+            </div>
           </div>
         </div>
 
         {/* Search button */}
         <button
           type="submit"
-          className="w-[156px] px-[20px] py-[12px] bg-primary text-white  rounded-[12px] hover:bg-primary-dark transition-colors"
+          className="w-[156px] px-[20px] py-[12px] bg-primary text-white  rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250"
         >
           Search
         </button>

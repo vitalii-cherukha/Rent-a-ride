@@ -15,7 +15,7 @@ const Header = () => {
             <ul className="flex gap-[32px]">
               <li>
                 <Link
-                  className="hover:text-primary-dark transition ease-linear duration-250"
+                  className="text-primary-dark transition ease-linear duration-250"
                   to={"/"}
                 >
                   Home
