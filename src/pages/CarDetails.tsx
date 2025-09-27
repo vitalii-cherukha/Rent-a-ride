@@ -44,12 +44,17 @@ const CarDetails = () => {
   const { city, country } = getAddressParts(car.address);
 
   return (
-    <div>
+    <div className="flex justify-center gap-[72px] pt-[84px]">
       {/* img + form container */}
-      <div>
-        <div>
-          <img src={car.img} alt={car.brand} width="640" height="512" />
-        </div>
+      <div className="flex flex-col gap-[40px] w-[650px]">
+        <img
+          className="w-[640px] h-[512px] rounded-[19px] object-cover"
+          src={car.img}
+          alt={car.brand}
+          width="640"
+          height="512"
+        />
+
         <div>
           <h2>Book your car now</h2>
           <p>Stay connected! We are always ready to help you.</p>
@@ -63,12 +68,11 @@ const CarDetails = () => {
         </div>
       </div>
       {/* info container */}
-      <div>
-        {/*  detail  */}
+      <div className="w-[488px]">
         <div>
           {/* title */}
           <div>
-            <h2>
+            <h2 className="text-[24px]">
               {car.brand}{" "}
               <span>
                 {car.model}, {car.year}

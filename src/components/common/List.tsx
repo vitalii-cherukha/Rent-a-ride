@@ -36,7 +36,7 @@ const List = ({ query }: ListProps) => {
   }, [query]);
 
   return (
-    <ul className="flex flex-wrap gap-x-[32px] gap-y-[48px]">
+    <ul className="flex justify-center flex-wrap gap-x-[32px] gap-y-[48px]">
       {cars.map((car) => {
         const { city, country } = getAddressParts(car.address);
         return (
