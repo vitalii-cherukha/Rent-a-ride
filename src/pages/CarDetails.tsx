@@ -6,14 +6,28 @@ import type { Car } from "../types/cars";
 import Loader from "../components/common/Loader";
 import Container from "../components/layout/Container";
 import DatePicker from "../components/common/DatePicker";
+import toast, { Toaster } from "react-hot-toast";
+
+interface FormData {
+  name: string;
+  email: string;
+  bookingDate: string;
+  comment: string;
+}
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [car, setCar] = useState<Car | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [bookingDate, setBookingDate] = useState<string>("");
   const [error, setError] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    bookingDate: "",
+    comment: "",
+  });
 
   useEffect(() => {
     const loadCar = async () => {
@@ -24,6 +38,9 @@ const CarDetails = () => {
       try {
         const data = await fetchCarById(id);
         setCar(data);
+        setFormData((prev) => ({
+          ...prev,
+        }));
       } catch {
         setError(true);
         setTimeout(() => {
@@ -35,6 +52,45 @@ const CarDetails = () => {
     };
     loadCar();
   }, [id, navigate]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleDateChange = (dateString: string) => {
+    setFormData((prev) => ({ ...prev, bookingDate: dateString }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSending) return;
+
+    setIsSending(true);
+
+    setTimeout(() => {
+      toast.success("Reservation request accepted!", {
+        duration: 4000,
+      });
+      console.log({
+        carId: car?.id,
+        ...formData,
+      });
+
+      setIsSending(false);
+
+      <Toaster />;
+
+      setFormData({
+        name: "",
+        email: "",
+        bookingDate: "",
+        comment: "",
+      });
+    }, 1500);
+  };
 
   const getAddressParts = (address: string) => {
     const parts = address.split(",").map((part) => part.trim());
@@ -55,6 +111,7 @@ const CarDetails = () => {
 
   return (
     <Container>
+      <Toaster position="top-right" />
       <div className="flex-col-reverse max-w-[1400px] mx-auto flex flex-col lg:flex-row lg:justify-center gap-8 md:gap-12 lg:gap-[72px] pt-10 md:pt-16 lg:pt-[84px] pb-16 md:pb-20 lg:pb-[104px]">
         {/* img + form container */}
         <div className="flex flex-col gap-[40px] w-[650px]">
@@ -79,12 +136,15 @@ const CarDetails = () => {
               </p>
             </div>
 
-            <form className="flex flex-col gap-[16px]">
+            <form className="flex flex-col gap-[16px]" onSubmit={handleSubmit}>
               <input
                 type="text"
                 name="name"
                 placeholder="Name*"
                 required
+                value={formData.name}
+                onChange={handleChange}
+                disabled={isSending}
                 className="w-full text[16px] px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
               />
 
@@ -93,19 +153,26 @@ const CarDetails = () => {
                 name="email"
                 placeholder="Email*"
                 required
+                value={formData.email}
+                onChange={handleChange}
+                disabled={isSending}
                 className="w-full px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
               />
 
               <DatePicker
-                value={bookingDate}
-                onChange={setBookingDate}
+                value={formData.bookingDate}
+                onChange={handleDateChange}
                 placeholder="Booking date"
+                disabled={isSending}
               />
 
               <textarea
                 name="comment"
                 placeholder="Comment"
                 rows={4}
+                value={formData.comment}
+                onChange={handleChange}
+                disabled={isSending}
                 className="w-full h-[88px] px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey resize-none leading-[1.25]"
               />
 
@@ -113,7 +180,7 @@ const CarDetails = () => {
                 type="submit"
                 className="mt-[8px] mx-auto w-[156px] py-[12px] bg-primary text-white font-semibold rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250 mt-[6px] leading-[1.25]"
               >
-                Send
+                {isSending ? "Sending..." : "Send"}
               </button>
             </form>
           </div>
