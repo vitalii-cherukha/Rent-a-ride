@@ -1,7 +1,12 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import Container from "./Container";
 
 const Header = () => {
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
+  const isCatalog = location.pathname === "/catalog";
+
   return (
     <div className="bg-background-light">
       <Container>
@@ -15,7 +20,9 @@ const Header = () => {
             <ul className="flex gap-[32px]">
               <li>
                 <Link
-                  className="hover:text-primary-dark transition ease-linear duration-250"
+                  className={`hover:text-primary-dark transition ease-linear duration-250 ${
+                    isHome ? "text-primary" : "text-dark-bg hover:text-primary"
+                  }`}
                   to={"/"}
                 >
                   Home
@@ -23,7 +30,11 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  className="hover:text-primary-dark transition ease-linear duration-250"
+                  className={`hover:text-primary-dark transition ease-linear duration-250 ${
+                    isCatalog
+                      ? "text-primary"
+                      : "text-dark-bg hover:text-primary"
+                  }`}
                   to={"/catalog"}
                 >
                   Catalog

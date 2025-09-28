@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import type { FetchCarsParams } from "../../types/params";
-import { fetchCars } from "../../services/carsApi";
-import type { Car } from "../../types/cars";
+import { useEffect } from "react";
+import { useCarsStore } from "../../store/carsStore";
+import { useFavoritesStore } from "../../store/favoritesStore";
 import { Link } from "react-router";
 import Loader from "./Loader";
 
@@ -18,58 +18,21 @@ const getAddressParts = (address: string) => {
 };
 
 const List = ({ query }: ListProps) => {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [favorites, setFavorites] = useState<Set<string>>(() => {
-    const saved = localStorage.getItem("favoriteCars");
-    return saved ? new Set(JSON.parse(saved)) : new Set();
-  });
+  const { cars, isLoading, page, totalPages, loadCars, loadMoreCars } =
+    useCarsStore();
+  const { toggleFavorite, isFavorite } = useFavoritesStore();
 
   const handleFavoriteClick = (carId: string) => {
-    setFavorites((prev) => {
-      const newFavorites = new Set(prev);
-      if (newFavorites.has(carId)) {
-        newFavorites.delete(carId);
-      } else {
-        newFavorites.add(carId);
-      }
-      localStorage.setItem("favoriteCars", JSON.stringify([...newFavorites]));
-      return newFavorites;
-    });
+    toggleFavorite(carId);
   };
-
-  useEffect(() => {
-    const loadCars = async () => {
-      try {
-        setIsLoading(true);
-
-        const data = await fetchCars({
-          ...query,
-          page: String(page),
-          limit: "12",
-        });
-        setCars((prev) => (page === 1 ? data.cars : [...prev, ...data.cars]));
-
-        setTotalPages(Number(data.totalPages));
-      } catch (error) {
-        console.error("Failed to fetch cars", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadCars();
-  }, [query, page]);
-
-  useEffect(() => {
-    setPage(1);
-    setCars([]);
-  }, [query]);
 
   const handleLoadMore = () => {
-    setPage((prev) => prev + 1);
+    loadMoreCars(query);
   };
+
+  useEffect(() => {
+    loadCars(query);
+  }, [query, loadCars]);
 
   if (isLoading && cars.length === 0) {
     return <Loader />;
@@ -80,7 +43,7 @@ const List = ({ query }: ListProps) => {
       <ul className="flex flex-wrap gap-x-[32px] gap-y-[48px] mb-[80px] ">
         {cars.map((car) => {
           const { city, country } = getAddressParts(car.address);
-          const isFavorite = favorites.has(car.id);
+          const isFavoriteItem = isFavorite(car.id);
 
           return (
             <li key={car.id} className="flex flex-col w-[276px] h-[424px]">
@@ -101,12 +64,12 @@ const List = ({ query }: ListProps) => {
                     width="16"
                     height="16"
                     className={`transition-transform duration-300 ${
-                      isFavorite ? "scale-110" : "scale-100"
+                      isFavoriteItem ? "scale-110" : "scale-100"
                     }`}
                   >
                     <use
                       href={`/icons.svg#icon-like-${
-                        isFavorite ? "active" : "default"
+                        isFavoriteItem ? "active" : "default"
                       }`}
                     />
                   </svg>
