@@ -7,11 +7,27 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "120px",
+        DEFAULT: "16px", // Мобільні
+        sm: "24px", // Планшети
+        md: "40px", // Середні екрани
+        lg: "60px", // Великі екрани
+        xl: "120px", // Desktop
       },
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
         xl: "1440px",
       },
+    },
+
+    screens: {
+      xs: "375px", // Маленькі мобільні
+      sm: "640px", // Мобільні (горизонтально)
+      md: "768px", // Планшети
+      lg: "1024px", // Ноутбуки
+      xl: "1440px", // Desktop
+      "2xl": "1536px", // Великі екрани
     },
 
     extend: {
@@ -38,7 +54,7 @@ const config: Config = {
         "background-alt": "#F7F7F7",
 
         // Колір тексту - Сірий
-        "text-grey": "#8d929a",
+        grey: "#8d929a",
       },
     },
   },

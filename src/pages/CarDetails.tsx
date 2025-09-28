@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { fetchCarById } from "../services/carsApi";
 import { useEffect, useState } from "react";
 import type { Car } from "../types/cars";
+import Loader from "../components/common/Loader";
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -35,11 +36,11 @@ const CarDetails = () => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (!car) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
   const { city, country } = getAddressParts(car.address);
 
@@ -48,7 +49,7 @@ const CarDetails = () => {
       {/* img + form container */}
       <div className="flex flex-col gap-[40px] w-[650px]">
         <img
-          className="w-[640px] h-[512px] rounded-[19px] object-cover"
+          className="w-full rounded-[19px] object-cover"
           src={car.img}
           alt={car.brand}
           width="640"
@@ -68,13 +69,13 @@ const CarDetails = () => {
             </p>
           </div>
 
-          <form className="flex flex-col gap-[18px]">
+          <form className="flex flex-col gap-[16px]">
             <input
               type="text"
               name="name"
               placeholder="Name*"
               required
-              className="w-full text[16px] px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
+              className="w-full text[16px] px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
             />
 
             <input
@@ -82,26 +83,26 @@ const CarDetails = () => {
               name="email"
               placeholder="Email*"
               required
-              className="w-full px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
+              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
             />
 
             <input
               type="date"
               name="bookingDate"
               placeholder="Booking date"
-              className="w-full px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg leading-[1.25]"
+              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg leading-[1.25]"
             />
 
             <textarea
               name="comment"
               placeholder="Comment"
               rows={4}
-              className="w-full h-[88px] px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey resize-none leading-[1.25]"
+              className="w-full h-[88px] px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey resize-none leading-[1.25]"
             />
 
             <button
               type="submit"
-              className="mx-auto w-[156px] py-[12px] bg-primary text-white font-semibold rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250 mt-[6px] leading-[1.25]"
+              className="mt-[8px] mx-auto w-[156px] py-[12px] bg-primary text-white font-semibold rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250 mt-[6px] leading-[1.25]"
             >
               Send
             </button>
@@ -119,7 +120,7 @@ const CarDetails = () => {
                 {car.model}, {car.year}
               </span>
             </h2>
-            <p className="text-text-grey">id: {car.id.slice(0, 4)}</p>
+            <p className="text-grey">id: {car.id.slice(0, 4)}</p>
           </div>
           <div className="h-[16px] flex items-center mb-[16px]">
             <svg width={16} height={16} className="mr-[4px]">

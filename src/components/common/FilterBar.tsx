@@ -65,14 +65,14 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex justify-center px-4 md:px-0">
       <form
         action={handleSubmit}
-        className="flex mx-auto  items-end gap-[16px] mt-[84px] mb-[56px] flex-wrap"
+        className="flex flex-col md:flex-row mx-auto items-stretch md:items-end gap-4 md:gap-[16px] mt-[40px] md:mt-[84px] mb-[40px] md:mb-[56px] w-full md:w-auto"
       >
         {/* Car brand dropdown */}
-        <div className="w-[204px]">
-          <label className="block text-[12px] text-[#8d929a] mb-[8px] ">
+        <div className="w-full md:w-[204px]">
+          <label className="block text-[12px] text-grey mb-[8px] ">
             Car brand
           </label>
           <div className="relative">
@@ -103,10 +103,8 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                       setSelectedBrand(brand);
                       setIsBrandOpen(false);
                     }}
-                    className={`leading-[1.25] w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
-                      selectedBrand === brand
-                        ? "text-dark-bg"
-                        : "text-[#8d929a]"
+                    className={`leading-[1.25] w-full px-[18px] py-[7px] text-left text-grey hover:text-dark-bg transition ease-linear duration-250 ${
+                      selectedBrand === brand ? "text-dark-bg" : "text-grey"
                     }`}
                   >
                     {brand}
@@ -118,8 +116,8 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         </div>
 
         {/* Price dropdown */}
-        <div className="relative  w-[196px]">
-          <label className="block text-[12px] text-[#8d929a] mb-[8px]">
+        <div className="relative w-full md:w-[196px]">
+          <label className="block text-[12px] text-grey mb-[8px]">
             Price/ 1 hour
           </label>
           <div className="relative">
@@ -150,10 +148,8 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                       setSelectedPrice(price);
                       setIsPriceOpen(false);
                     }}
-                    className={`leading-[1.25] w-full px-[18px] py-[7px] text-left text-[#8d929a] hover:text-dark-bg transition ease-linear duration-250 ${
-                      selectedPrice === price
-                        ? "text-dark-bg"
-                        : "text-[#8d929a]"
+                    className={`leading-[1.25] w-full px-[18px] py-[7px] text-left text-grey hover:text-dark-bg transition ease-linear duration-250 ${
+                      selectedPrice === price ? "text-dark-bg" : "text-grey"
                     }`}
                   >
                     {price}
@@ -165,8 +161,8 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         </div>
 
         {/* Mileage inputs */}
-        <div>
-          <label className="block text-[12px] text-[#8d929a] mb-[8px]">
+        <div className="w-full md:w-auto">
+          <label className="block text-[12px] text-grey mb-[8px]">
             Car mileage / km
           </label>
           <div className="flex">
@@ -176,13 +172,13 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                 value={mileageFrom}
                 onChange={handleMileageFromChange}
                 inputMode="numeric"
-                className="w-[160px] pl-[66px] pr-[20px] py-[12px] bg-background-alt  rounded-l-[12px] leading-[1.25] "
+                className="w-full md:w-[160px] pl-[66px] pr-[20px] py-[12px] bg-background-alt rounded-l-[12px] leading-[1.25]"
               />
               <span className="absolute top-[12px] left-[24px] pointer-events-none ">
                 From
               </span>
             </div>
-            <div className="w-[1px] bg-[#8d929a] "></div>
+            <div className="w-[1px] bg-grey "></div>
             <div className="relative">
               <input
                 type="text"
