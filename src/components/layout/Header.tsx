@@ -14,7 +14,10 @@ const Header = () => {
             </Link>
             <ul className="flex gap-[32px]">
               <li>
-                <Link className=" transition ease-linear duration-250" to={"/"}>
+                <Link
+                  className="hover:text-primary-dark transition ease-linear duration-250"
+                  to={"/"}
+                >
                   Home
                 </Link>
               </li>

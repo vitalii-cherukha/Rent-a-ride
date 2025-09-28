@@ -56,6 +56,10 @@ const config: Config = {
         // Колір тексту - Сірий
         grey: "#8d929a",
       },
+      backgroundImage: {
+        "dark-gradient":
+          "linear-gradient(to bottom, #2d3748 0%, #4a5568 30%, #718096 60%, #f7fafc 100%)",
+      },
     },
   },
   plugins: [],

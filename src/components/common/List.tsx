@@ -85,7 +85,7 @@ const List = ({ query }: ListProps) => {
           return (
             <li key={car.id} className="flex flex-col w-[276px] h-[424px]">
               {/* image container */}
-              <div className="relative mb-[14px]">
+              <div className="relative rounded-[12px] bg-dark-gradient mb-[14px]">
                 <img
                   src={car.img}
                   alt={car.brand}
@@ -122,10 +122,10 @@ const List = ({ query }: ListProps) => {
               </div>
               {/* info container */}
               <div className="flex-1">
-                <p className="text-[12px] text-text-grey leading-[1.33]">
+                <p className="text-[12px] text-grey leading-[1.33]">
                   {city} | {country} | {car.rentalCompany}
                 </p>
-                <p className="text-[12px] text-text-grey leading-[1.33]">
+                <p className="text-[12px] text-grey leading-[1.33]">
                   {car.type} | {car.mileage.toLocaleString("uk-UA")} km
                 </p>
               </div>
