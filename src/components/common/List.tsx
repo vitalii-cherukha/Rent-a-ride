@@ -69,10 +69,10 @@ const List = ({ query }: ListProps) => {
             </div>
             {/* info container */}
             <div className="flex-1">
-              <p className="text-[12px] text-[#8d929a] leading-[1.33]">
+              <p className="text-[12px] text-text-grey leading-[1.33]">
                 {city} | {country} | {car.rentalCompany}
               </p>
-              <p className="text-[12px] text-[#8d929a] leading-[1.33]">
+              <p className="text-[12px] text-text-grey leading-[1.33]">
                 {car.type} | {car.mileage.toLocaleString("uk-UA")} km
               </p>
             </div>

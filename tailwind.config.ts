@@ -1,6 +1,5 @@
-// tailwind.config.ts
-
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
@@ -16,6 +15,9 @@ const config: Config = {
     },
 
     extend: {
+      fontFamily: {
+        sans: ["Manrope", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         // Темний фон (Hero, оверлей)
         "dark-bg": "#101828",
@@ -34,6 +36,9 @@ const config: Config = {
 
         // Колір фону - Дуже світлий сірий
         "background-alt": "#F7F7F7",
+
+        // Колір тексту - Сірий
+        "text-grey": "#8d929a",
       },
     },
   },

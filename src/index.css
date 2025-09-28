@@ -2,6 +2,70 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Manrope Regular (400) */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/manrope-latin-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Manrope Medium (500) */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/manrope-latin-500-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Manrope SemiBold (600) */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/manrope-latin-600-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Manrope Bold (700) */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/manrope-latin-700-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Inter Regular (400)  */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+
+  src: url("./assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Inter Medium (500) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/inter-latin-500-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Inter SemiBold (600) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/inter-latin-600-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
 h1,
 h2,
 h3,

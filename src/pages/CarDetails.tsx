@@ -55,13 +55,18 @@ const CarDetails = () => {
           height="512"
         />
 
-        <div className="border border-border-light rounded-[10px] p-[32px] max-w-[640px]">
-          <h2 className="text-[20px] font-semibold mb-[8px] leading-[1.20]">
-            Book your car now
-          </h2>
-          <p className="text-[14px] text-[#8d929a] mb-[24px]">
-            Stay connected! We are always ready to help you.
-          </p>
+        <div
+          className="flex flex-col gap-[24px]
+         border border-border-light rounded-[10px] p-[32px] max-w-[640px]"
+        >
+          <div>
+            <h2 className="text-[20px] font-semibold mb-[8px] leading-[1.20]">
+              Book your car now
+            </h2>
+            <p className=" text-text-grey leading-[1.25]">
+              Stay connected! We are always ready to help you.
+            </p>
+          </div>
 
           <form className="flex flex-col gap-[18px]">
             <input
@@ -69,7 +74,7 @@ const CarDetails = () => {
               name="name"
               placeholder="Name*"
               required
-              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg placeholder-[#8d929a] border-none"
+              className="w-full text[16px] px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
             />
 
             <input
@@ -77,25 +82,26 @@ const CarDetails = () => {
               name="email"
               placeholder="Email*"
               required
-              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg placeholder-[#8d929a] border-none"
+              className="w-full px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey leading-[1.25]"
             />
 
             <input
               type="date"
               name="bookingDate"
-              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg border-none"
+              placeholder="Booking date"
+              className="w-full px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg leading-[1.25]"
             />
 
             <textarea
               name="comment"
               placeholder="Comment"
               rows={4}
-              className="w-full px-[20px] py-[14px] bg-background-alt rounded-[14px] text-dark-bg placeholder-[#8d929a] border-none resize-none"
+              className="w-full h-[88px] px-[20px] py-[12px] bg-background-alt rounded-[12px] text-dark-bg placeholder-text-grey resize-none leading-[1.25]"
             />
 
             <button
               type="submit"
-              className="mx-auto w-[156px] py-[12px] bg-primary text-white font-semibold rounded-[14px] hover:bg-primary-dark transition ease-linear duration-250 mt-[6px] leading-[1.25]"
+              className="mx-auto w-[156px] py-[12px] bg-primary text-white font-semibold rounded-[12px] hover:bg-primary-dark transition ease-linear duration-250 mt-[6px] leading-[1.25]"
             >
               Send
             </button>
@@ -103,7 +109,7 @@ const CarDetails = () => {
         </div>
       </div>
       {/* info container */}
-      <div className="w-[488px]">
+      <div className="w-[488px] mt-[20px]">
         {/* title */}
         <div className="mb-[68px]">
           <div className="flex items-baseline mb-[8px]">
@@ -113,9 +119,9 @@ const CarDetails = () => {
                 {car.model}, {car.year}
               </span>
             </h2>
-            <p className="text-[#8d929a]">id: {car.id.slice(0, 4)}</p>
+            <p className="text-text-grey">id: {car.id.slice(0, 4)}</p>
           </div>
-          <div className="flex items-center mb-[16px]">
+          <div className="h-[16px] flex items-center mb-[16px]">
             <svg width={16} height={16} className="mr-[4px]">
               <use href="/icons.svg#icon-location" />
             </svg>
@@ -124,11 +130,11 @@ const CarDetails = () => {
             </p>
             <p>Mileage: {car.mileage.toLocaleString("uk-UA")} km</p>
           </div>
-          <p className="leading-[1.33] text-[24px] text-primary">
+          <p className="leading-[1.33] font-semibold text-[24px] text-primary">
             ${car.rentalPrice}
           </p>
           <div className="mt-[32px]">
-            <p>{car.description}</p>
+            <p className="leading-[1.25]">{car.description}</p>
           </div>
         </div>
         {/* other information */}
