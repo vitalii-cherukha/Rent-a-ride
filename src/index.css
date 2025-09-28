@@ -125,35 +125,16 @@ body {
   padding: 0;
 }
 
-/* Адаптив для малих екранів */
-@media (max-width: 330px) {
-  .flatpickr-calendar {
-    margin-left: -27px;
-  }
-}
-
 /* Календар знизу */
 .flatpickr-calendar.arrowBottom {
   margin-top: 0;
   transform: translateY(-12px);
 }
 
-@media (max-width: 330px) {
-  .flatpickr-calendar.arrowBottom {
-    margin-left: -27px;
-  }
-}
-
 /* Календар справа */
 .flatpickr-calendar.rightMost {
   margin-top: 0;
   transform: translateY(-12px);
-}
-
-@media (max-width: 330px) {
-  .flatpickr-calendar.rightMost {
-    margin-left: 10px;
-  }
 }
 
 /* Стрілки календаря */
@@ -281,4 +262,8 @@ body {
 
 .flatpickr-day.flatpickr-disabled:hover {
   background: transparent;
+}
+
+.flatpickr-months .flatpickr-prev-month {
+  padding-top: 12px !important;
 }
