@@ -65,10 +65,10 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
   };
 
   return (
-    <div className="flex justify-center px-4 md:px-0">
+    <div className="flex justify-center px-4 ">
       <form
         action={handleSubmit}
-        className="flex flex-col md:flex-row mx-auto items-stretch md:items-end gap-4 md:gap-[16px] mt-[40px] md:mt-[84px] mb-[40px] md:mb-[56px] w-full md:w-auto"
+        className="flex flex-col flex-wrap md:flex-row mx-auto items-stretch md:items-end gap-4 md:gap-[16px] mt-[40px] md:mt-[84px] mb-[40px] md:mb-[56px] w-full md:w-auto"
       >
         {/* Car brand dropdown */}
         <div className="w-full md:w-[204px]">

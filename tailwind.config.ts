@@ -7,27 +7,14 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "16px", // Мобільні
-        sm: "24px", // Планшети
+        DEFAULT: "25px", // Мобільні
         md: "40px", // Середні екрани
-        lg: "60px", // Великі екрани
         xl: "120px", // Desktop
       },
       screens: {
-        sm: "640px",
         md: "768px",
-        lg: "1024px",
         xl: "1440px",
       },
-    },
-
-    screens: {
-      xs: "375px", // Маленькі мобільні
-      sm: "640px", // Мобільні (горизонтально)
-      md: "768px", // Планшети
-      lg: "1024px", // Ноутбуки
-      xl: "1440px", // Desktop
-      "2xl": "1536px", // Великі екрани
     },
 
     extend: {

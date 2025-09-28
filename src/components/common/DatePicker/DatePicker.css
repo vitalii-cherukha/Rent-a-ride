@@ -1,0 +1,151 @@
+/* Flatpickr Custom Styles */
+.flatpickr-calendar {
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  border: 2px solid #3470ff !important;
+  font-family: "Inter", sans-serif;
+  padding: 0 !important;
+  padding-bottom: 16px;
+  width: 310px !important;
+}
+
+.flatpickr-calendar.arrowBottom {
+  margin-top: 0;
+  transform: translateY(-12px);
+}
+
+.flatpickr-calendar.rightMost {
+  margin-top: 0;
+  transform: translateY(-12px);
+}
+
+/* Стрілка календаря */
+
+.flatpickr-next-month,
+.flatpickr-prev-month {
+  padding-top: 14px !important;
+}
+
+.flatpickr-calendar:before,
+.flatpickr-calendar:after {
+  left: 50%;
+  margin-left: -7px;
+  border-width: 6px;
+  margin-top: 0;
+}
+
+.flatpickr-calendar:before {
+  border-width: 7px;
+  margin-left: -8px;
+}
+
+.flatpickr-calendar.arrowTop:before {
+  border-bottom-color: #3470ff;
+}
+
+.flatpickr-calendar.arrowBottom:before {
+  border-top-color: #3470ff;
+}
+
+/* Шапка календаря */
+.flatpickr-calendar .flatpickr-months {
+  border-radius: 12px 12px 0 0;
+  padding: 12px 0;
+}
+
+.flatpickr-calendar .flatpickr-monthDropdown-months,
+.flatpickr-calendar input.cur-year {
+  appearance: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #101828;
+  background: transparent;
+  border: none;
+}
+
+.flatpickr-current-month {
+  padding: 0;
+}
+
+.flatpickr-months {
+  padding-bottom: 0px !important;
+}
+
+/* Навігаційні стрілки */
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg {
+  width: 16px;
+  height: 16px;
+}
+
+.flatpickr-months .flatpickr-prev-month svg path,
+.flatpickr-months .flatpickr-next-month svg path {
+  fill: #3470ff;
+  stroke-width: 2;
+}
+
+/* Дні тижня */
+.flatpickr-calendar .flatpickr-weekday {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #8d929a;
+  text-transform: uppercase;
+}
+
+/* Контейнер днів */
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-days {
+  border-top: 1px solid #3470ff;
+}
+
+.flatpickr-calendar .flatpickr-innerContainer .dayContainer {
+  padding: 12px;
+}
+
+/* Дні місяця */
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-day {
+  width: 36px;
+  height: 32px;
+  font-size: 14px;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #101828;
+  font-weight: 500;
+}
+
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-day:hover {
+  background: #f3f4f6;
+}
+
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-day.today,
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-day.selected {
+  background: #3470ff !important;
+  color: #fff !important;
+  border-color: #3470ff !important;
+  font-weight: 600;
+}
+
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-day.today:hover,
+.flatpickr-calendar .flatpickr-innerContainer .flatpickr-day.selected:hover {
+  background: #0b44cd !important;
+}
+
+/* Дні з інших місяців */
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: #d1d5db;
+}
+
+/* Disabled дні */
+.flatpickr-day.flatpickr-disabled {
+  color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+.flatpickr-day.flatpickr-disabled:hover {
+  background: transparent;
+}

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import type { Car } from "../types/cars";
 import Loader from "../components/common/Loader";
 import Container from "../components/layout/Container";
-import DatePicker from "../components/common/DatePicker";
+import DatePicker from "../components/common/DatePicker/DatePicker";
 import toast, { Toaster } from "react-hot-toast";
 
 interface FormData {
@@ -114,7 +114,7 @@ const CarDetails = () => {
       <Toaster position="top-right" />
       <div className="flex-col-reverse max-w-[1400px] mx-auto flex flex-col lg:flex-row lg:justify-center gap-8 md:gap-12 lg:gap-[72px] pt-10 md:pt-16 lg:pt-[84px] pb-16 md:pb-20 lg:pb-[104px]">
         {/* img + form container */}
-        <div className="flex flex-col gap-[40px] w-[650px]">
+        <div className="flex flex-col gap-[40px] w-[640px]">
           <img
             className="w-full rounded-[19px] object-cover bg-dark-gradient"
             src={car.img}

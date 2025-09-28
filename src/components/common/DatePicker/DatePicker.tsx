@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import "./DatePicker.css";
 
 interface DatePickerProps {
   value: string;
@@ -14,7 +15,6 @@ interface DatePickerProps {
 const DatePicker = ({
   value,
   onChange,
-  error,
   disabled,
   placeholder = "Booking date",
   name = "bookingDate",
@@ -37,51 +37,6 @@ const DatePicker = ({
             : "";
           onChange(isoDate);
         },
-        locale: {
-          firstDayOfWeek: 1, // Понеділок
-          weekdays: {
-            shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            longhand: [
-              "Sunday",
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-            ],
-          },
-          months: {
-            shorthand: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
-            longhand: [
-              "January",
-              "February",
-              "March",
-              "April",
-              "May",
-              "June",
-              "July",
-              "August",
-              "September",
-              "October",
-              "November",
-              "December",
-            ],
-          },
-        },
       });
     }
 
@@ -100,9 +55,7 @@ const DatePicker = ({
         readOnly
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg leading-[1.25] cursor-pointer ${
-          error ? "border-2 border-red-500" : ""
-        } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+        className="w-full px-[20px] py-[14px] bg-background-alt rounded-[12px] text-dark-bg leading-[1.25] cursor-pointer"
       />
     </div>
   );
