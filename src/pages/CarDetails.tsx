@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 import { fetchCarById } from "../services/carsApi";
 import { useEffect, useState } from "react";
 import type { Car } from "../types/cars";
@@ -8,9 +9,11 @@ import DatePicker from "../components/common/DatePicker";
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [car, setCar] = useState<Car | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [bookingDate, setBookingDate] = useState<string>("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const loadCar = async () => {
@@ -21,14 +24,17 @@ const CarDetails = () => {
       try {
         const data = await fetchCarById(id);
         setCar(data);
-      } catch (error) {
-        console.log("Failed to fetch car by id:", error);
+      } catch {
+        setError(true);
+        setTimeout(() => {
+          navigate("/not-found", { replace: true });
+        }, 2000);
       } finally {
         setIsLoading(false);
       }
     };
     loadCar();
-  }, [id]);
+  }, [id, navigate]);
 
   const getAddressParts = (address: string) => {
     const parts = address.split(",").map((part) => part.trim());
@@ -42,7 +48,7 @@ const CarDetails = () => {
     return <Loader />;
   }
 
-  if (!car) {
+  if (error || !car) {
     return <Loader />;
   }
   const { city, country } = getAddressParts(car.address);
