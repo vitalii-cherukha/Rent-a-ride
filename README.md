@@ -1,4 +1,4 @@
-RENT-A-RIDE
+##RENT-A-RIDE
 
 A simple yet powerful car rental web application built with React and TypeScript. It allows users to browse a catalog of cars, apply filters, view detailed information, and simulate bookings.
 
