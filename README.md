@@ -47,21 +47,27 @@ Follow these steps to run the project locally:
    cd rent-a-ride
 
 2. Install dependencies
+   ```
    npm install
-
-# or
-
-yarn install
+   ```
+   or
+   ```
+   yarn install
+   ```
 
 3. Run the development server
+   ```
    npm run dev
-
-# or
-
-yarn dev
+   ```
+   or
+   ```
+   yarn dev
+   ```
 
 The app will be available at:
 👉 https://rent-a-ride-azure.vercel.app/
 
 4. Build for production
+   ```
    npm run build
+   ```
