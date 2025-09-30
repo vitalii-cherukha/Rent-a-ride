@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { fetchBrands } from "../../services/carsApi";
 
 interface FilterValues {
@@ -20,6 +20,9 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
   const [selectedPrice, setSelectedPrice] = useState("");
   const [mileageFrom, setMileageFrom] = useState("");
   const [mileageTo, setMileageTo] = useState("");
+
+  const brandDropdownRef = useRef<HTMLDivElement>(null);
+  const priceDropdownRef = useRef<HTMLDivElement>(null);
 
   const formatNumber = (value: string): string => {
     const numbers = value.replace(/\D/g, ""); //
@@ -53,6 +56,30 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
     loadBrands();
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        brandDropdownRef.current &&
+        !brandDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsBrandOpen(false);
+      }
+
+      if (
+        priceDropdownRef.current &&
+        !priceDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsPriceOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleSubmit = () => {
     const values: FilterValues = {};
 
@@ -71,7 +98,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         className="flex flex-col flex-wrap md:flex-row mx-auto items-stretch md:items-end gap-4 md:gap-[16px] mt-[40px] md:mt-[84px] mb-[40px] md:mb-[56px] w-full md:w-auto"
       >
         {/* Car brand dropdown */}
-        <div className="w-[204px]">
+        <div className="w-[204px]" ref={brandDropdownRef}>
           <label className="block text-[12px] text-grey mb-[8px] ">
             Car brand
           </label>
@@ -116,7 +143,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         </div>
 
         {/* Price dropdown */}
-        <div className="relative w-full md:w-[196px]">
+        <div className="relative w-full md:w-[196px]" ref={priceDropdownRef}>
           <label className="block text-[12px] text-grey mb-[8px]">
             Price/ 1 hour
           </label>
