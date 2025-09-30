@@ -71,7 +71,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         className="flex flex-col flex-wrap md:flex-row mx-auto items-stretch md:items-end gap-4 md:gap-[16px] mt-[40px] md:mt-[84px] mb-[40px] md:mb-[56px] w-full md:w-auto"
       >
         {/* Car brand dropdown */}
-        <div className="w-full md:w-[204px]">
+        <div className="w-[204px]">
           <label className="block text-[12px] text-grey mb-[8px] ">
             Car brand
           </label>
@@ -161,7 +161,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
         </div>
 
         {/* Mileage inputs */}
-        <div className="w-full md:w-auto">
+        <div className="w-auto">
           <label className="block text-[12px] text-grey mb-[8px]">
             Car mileage / km
           </label>

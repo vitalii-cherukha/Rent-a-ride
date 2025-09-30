@@ -7,12 +7,9 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "25px", // Мобільні
-        md: "40px", // Середні екрани
-        xl: "120px", // Desktop
+        DEFAULT: "120px",
       },
       screens: {
-        md: "768px",
         xl: "1440px",
       },
     },

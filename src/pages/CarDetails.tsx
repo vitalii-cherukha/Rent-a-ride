@@ -112,7 +112,7 @@ const CarDetails = () => {
   return (
     <Container>
       <Toaster position="top-right" />
-      <div className="flex-col-reverse max-w-[1400px] mx-auto flex flex-col lg:flex-row lg:justify-center gap-[32px] md:gap-[48px] lg:gap-[72px] pt-[40] md:pt-[64px] lg:pt-[84px] pb-[64px] md:pb-[80px] lg:pb-[104px]">
+      <div className="flex justify-center gap-[72px] pt-[84px] mb-[104px]">
         {/* img + form container */}
         <div className="flex flex-col gap-[40px] w-[640px]">
           <img
