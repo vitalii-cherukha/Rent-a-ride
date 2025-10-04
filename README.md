@@ -65,21 +65,21 @@ Clone repo
 git clone https://github.com/vitalii-cherukha/Rent-a-ride.git
 cd rent-a-ride
 ```
-Install dependencies
+## Install dependencies
 ```
 npm install
 ```
-# or
+or
 ```
 yarn install
 ```
 
-Run dev server
+## Run dev server
 
 ```
 npm run dev
 ```
-# or
+or
 ```
 yarn dev
 ```
