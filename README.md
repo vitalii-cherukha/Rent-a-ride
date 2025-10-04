@@ -73,9 +73,9 @@ npm install
 ```
 yarn install
 ```
-```
+
 Run dev server
-```
+
 ```
 npm run dev
 ```
