@@ -1,73 +1,93 @@
-## RENT-A-RIDE
+# 🚗 Rent-a-Ride
 
-A simple yet powerful car rental web application built with React and TypeScript. It allows users to browse a catalog of cars, apply filters, view detailed information, and simulate bookings.
+**Rent-a-Ride** — a simple yet powerful **car rental web application** built with **React + TypeScript**.  
+Users can browse a catalog of cars, apply smart filters, view detailed information, and simulate bookings.  
 
-✨ Features
+---
 
-Home Page: Engaging landing screen with a clear call-to-action to explore the catalog.
+## ✨ Features
 
-Catalog: Full list of available cars with pagination support.
+- 🏠 **Home Page** — Engaging landing screen with CTA to explore the catalog  
+- 🚘 **Catalog** — Full list of cars with pagination  
+- 🎯 **Smart Filtering** — Filter by brand, price, mileage  
+- 📄 **Car Details** — Car info, rental conditions, booking form  
+- ⭐ **Favorites** — Save preferred cars in LocalStorage  
+- 📅 **Booking Simulation** — Submit booking form + toast feedback  
 
-Smart Filtering: Filter cars by brand, rental price, and mileage.
+---
 
-Car Details: Comprehensive information about each car, rental conditions, and a booking form.
+## 🛠️ Tech Stack
 
-Favorites: Save preferred cars in LocalStorage for quick access.
+- ⚛️ **Frontend**: React  
+- 🟦 **Language**: TypeScript  
+- 📦 **State Management**: Zustand  
+- 🌍 **Routing**: React Router  
+- 🌐 **API Client**: Axios  
+- 🎨 **Styling**: Tailwind CSS  
+- 📅 **Date Picker**: react-flatpickr / react-datepicker  
+- 🔔 **Notifications**: react-hot-toast  
+- ⚡ **Build Tool**: Vite  
 
-Booking Simulation: Submit a booking form with instant toast notifications for success feedback.
+---
 
-🛠️ Tech Stack
+## 📂 Project Structure
 
-Frontend: React
-
-Language: TypeScript
-
-State Management: Zustand
-
-Routing: React Router
-
-API Client: Axios
-
-Styling: Tailwind CSS (utility-first, modular approach)
-
-Additional Tools & Libraries
-
-Date Picker: react-flatpickr / react-datepicker
-
-Notifications: react-hot-toast
-
-Build Tool: Vite
-
+```plaintext
+📁 rent-a-ride/
+├─ 📁 public/                # Static files
+│
+├─ 📁 src/
+│  ├─ 📁 assets/             # Images, icons
+│  ├─ 📁 components/         # Reusable UI components
+│  ├─ 📁 pages/              # App pages (React Router)
+│  │  ├─ 🏠 Home.tsx         # Landing page
+│  │  ├─ 🚘 Catalog.tsx      # Cars catalog
+│  │  ├─ 📄 CarDetails.tsx   # Car details + booking
+│  │  └─ ❌ NotFound.tsx     # 404 page
+│  ├─ 📁 services/           # API calls (Axios)
+│  ├─ 📁 store/              # Zustand store (state)
+│  ├─ 📁 types/              # TypeScript types
+│  ├─ ⚛️ App.tsx             # Root app
+│  ├─ 🎨 index.css           # Global styles (Tailwind)
+│  ├─ ⚡ main.tsx            # App entry point
+│  └─ 📄 declarations.d.ts   # Type declarations
+│
+├─ 📄 index.html             # App root HTML
+├─ 📄 eslint.config.js       # ESLint config
+├─ 📄 package.json           # Dependencies
+├─ 📄 package-lock.json      # Lock file
+├─ 📄 README.md              # Documentation
+└─ 📄 .gitignore             # Git ignore rules
+```
 🚀 Getting Started
+Clone repo
+```
+git clone https://github.com/vitalii-cherukha/Rent-a-ride.git
+cd rent-a-ride
+```
+Install dependencies
+```
+npm install
+```
+# or
+```
+yarn install
+```
+```
+Run dev server
+```
+```
+npm run dev
+```
+# or
+```
+yarn dev
+```
+The app will be available at 👉 http://localhost:5173
 
-Follow these steps to run the project locally:
+🌍 Live Demo
+🔗 rent-a-ride-azure.vercel.app
 
-1. Clone the repository
-   git clone https://github.com/vitalii-cherukha/Rent-a-ride.git
-   cd rent-a-ride
-
-2. Install dependencies
-   ```
-   npm install
-   ```
-   or
-   ```
-   yarn install
-   ```
-
-3. Run the development server
-   ```
-   npm run dev
-   ```
-   or
-   ```
-   yarn dev
-   ```
-
-The app will be available at:
-👉 https://rent-a-ride-azure.vercel.app/
-
-4. Build for production
-   ```
-   npm run build
-   ```
+👤 Author
+Developed by Vitalii Cherukha 🚀
+Pet project for practicing React, TypeScript & Zustand
