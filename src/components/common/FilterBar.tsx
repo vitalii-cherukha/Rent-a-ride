@@ -201,7 +201,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                 inputMode="numeric"
                 className="w-full md:w-[160px] pl-[66px] pr-[20px] py-[12px] bg-background-alt rounded-l-[12px] leading-[1.25]"
               />
-              <span className="absolute top-[12px] left-[24px] pointer-events-none ">
+              <span className="absolute top-[12px] left-[24px] pointer-events-none leading-[1.25] ">
                 From
               </span>
             </div>
@@ -214,7 +214,7 @@ const FilterBar = ({ onSubmit }: FilterBarProps) => {
                 inputMode="numeric"
                 className="w-[160px] pl-[45px] pr-[20px] py-[12px] bg-background-alt rounded-r-[12px] leading-[1.25]"
               />
-              <span className="absolute top-[12px] left-[24px] pointer-events-none">
+              <span className="absolute top-[12px] left-[24px] pointer-events-none leading-[1.25]">
                 To
               </span>
             </div>
